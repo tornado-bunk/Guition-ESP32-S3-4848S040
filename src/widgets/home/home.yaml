@@ -1338,6 +1338,7 @@ lvgl:
                   width: 60
                   height: 60
                   align: center
+                  x: -1
                   y: 2
                   bg_opa: transp
                   shadow_opa: transp
