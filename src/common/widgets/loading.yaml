@@ -150,9 +150,13 @@ script:
 
 api:
   on_client_connected:
+    - logger.log:
+        format: "API Client connected: %s"
+        args: [ 'client_info.c_str()' ]
     - if:
         condition:
-          lambda: 'return (0 == client_info.find("Home Assistant "));'
+          # Search "Home Assistant" in any point of the client_info string
+          lambda: 'return (client_info.find("Home Assistant") != std::string::npos);'
         then:
           - script.execute: update_loading_page
           - lvgl.label.update: 

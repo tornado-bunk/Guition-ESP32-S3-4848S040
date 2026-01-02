@@ -1267,6 +1267,7 @@ lvgl:
             border_opa: transp
             border_width: 0
             radius: 20
+            scrollbar_mode: "off"
             widgets:
               - button:
                   id: display_lock_btn
@@ -1329,6 +1330,26 @@ lvgl:
                     - script.execute:
                         id: switch_to_mode
                         target_mode: 0
+
+              # RELAY BUTTON
+              - button:
+                  id: home_relay_btn
+                  clickable: true
+                  width: 60
+                  height: 60
+                  align: center
+                  y: 2
+                  bg_opa: transp
+                  shadow_opa: transp
+                  widgets:
+                    - label:
+                        id: home_relay_btn_icon
+                        align: center
+                        text_color: color_misty_blue
+                        text_font: mdi_icons_28
+                        text: "\U000F0425"
+                  on_click:
+                    - switch.toggle: relay_switch
 
               - button:
                   id: weather_widget_btn
@@ -1690,6 +1711,7 @@ script:
             - lvgl.button.update: { id: settings_widget_btn, clickable: true }
             - lvgl.button.update: { id: home_lights_btn, clickable: true }
             - lvgl.button.update: { id: home_devices_btn, clickable: true }
+            - lvgl.button.update: { id: home_relay_btn, clickable: true }
             - lvgl.button.update: { id: weather_forecast_daily_btn, clickable: true }
             - lvgl.button.update: { id: weather_forecast_hourly_btn, clickable: true }
             - lvgl.slider.update: { id: backlight_settings_brightness_slider, clickable: true }
@@ -1706,6 +1728,7 @@ script:
             - lvgl.button.update: { id: settings_widget_btn, clickable: false }
             - lvgl.button.update: { id: home_lights_btn, clickable: false }
             - lvgl.button.update: { id: home_devices_btn, clickable: false }
+            - lvgl.button.update: { id: home_relay_btn, clickable: false }
             - lvgl.button.update: { id: weather_forecast_daily_btn, clickable: false }
             - lvgl.button.update: { id: weather_forecast_hourly_btn, clickable: false }
             - lvgl.slider.update: { id: backlight_settings_brightness_slider, clickable: false }
